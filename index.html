@@ -18,13 +18,13 @@
 
 body {
     margin: 0;
-    background: #f4f6f8;
+    background: #f3f4f6;
     color: #333;
 }
 
 /* HERO */
 header {
-    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    background: linear-gradient(135deg, #ec4899, #f472b6);
     color: white;
     padding: 40px 20px; /* Un poco más equilibrado */
     text-align: center;
@@ -43,12 +43,19 @@ header p {
 
 .cta-btn {
     background: white;
-    color: #7c3aed;
+    color: #ec4899;
     padding: 14px 28px;
     border-radius: 30px;
     text-decoration: none;
     font-weight: bold;
 }
+
+.cta-btn:hover {
+    background: #be185d;
+    transition: all 0.3s;
+    color: white;
+}
+
 
 /* NAV */
 nav {
@@ -63,7 +70,7 @@ nav {
 nav a {
     margin: 0 12px;
     text-decoration: none;
-    color: #7c3aed;
+    color: #374151;
     font-weight: 600;
 }
 
@@ -77,7 +84,7 @@ section {
 h2 {
     font-size: 2rem;
     margin-bottom: 25px;
-    color: #7c3aed;
+    color: #374151;
 }
 
 .card {
@@ -107,7 +114,7 @@ h2 {
 
 /* FOOTER */
 footer {
-    background: #1e1b4b;
+    background: #374151;
     color: white;
     text-align: center;
     padding: 40px 20px;
@@ -141,6 +148,9 @@ footer a {
     header p {
         font-size: 1rem;
     }
+    section {
+        margin: 60px auto;
+    }
 }
 
 </style>
@@ -163,7 +173,7 @@ footer a {
 <nav>
     <a href="#quienes">Nosotros</a>
     <a href="#servicios">Especialidades</a>
-    <a href="#instalaciones">Centro</a>
+    <a href="#instalaciones">Servicios</a>
     <a href="#contacto">Contacto</a>
 </nav>
 
@@ -242,12 +252,16 @@ footer a {
     <div class="card">
         <p><strong>Dirección:</strong> Brasil esquina Almada, Alta Gracia, Córdoba.</p>
         <p><strong>Teléfono:</strong>📱3547448227 </p>
+        <p>
+          <a href="https://instagram.com/cim.alta.gracia" target="_blank" rel="noopener" style="margin-right: 15px; color: #E4405F; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-instagram"></i></a>
+          <a href="https://tiktok.com/@gineconoe" target="_blank" rel="noopener" style="color: #000; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-tiktok"></i></a>
+        </p>
     </div>
 </section>
 
 <footer>
     <p>© 2026 Centro Integral de la Mujer</p>
-    <p>Desarrollado por <a href="https://jsdevmobile.com" target="_blank">JSDev</a></p>
+    <p>Desarrollado por <a href="https://jsdevmobile.com/pages/web.html" target="_blank">JSDev</a></p>
 </footer>
 
 <a class="whatsapp"
