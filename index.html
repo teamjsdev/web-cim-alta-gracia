@@ -132,16 +132,25 @@ footer a {
 }
 
 
-/* WHATSAPP */
 .whatsapp {
     position: fixed;
     bottom: 20px;
     right: 20px;
     background: #25d366;
     color: white;
-    padding: 16px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
-    font-size: 22px;
+    font-size: 28px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.whatsapp:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
 }
 
 @media (max-width: 768px) {
@@ -292,7 +301,7 @@ footer a {
 <a class="whatsapp"
    href="https://wa.me/5493547448227"
    target="_blank">
-   💬
+   <i class="fab fa-whatsapp"></i>
 </a>
 
 </body>
