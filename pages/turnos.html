@@ -181,19 +181,16 @@ footer {
 <script>
 
 // CONFIG
-const API_URL = "https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycby2XAk6NdFCa1FXErjrp8fbvUsj2OdeVHlwnvP3ZzOHmbKxyB1B-rocAyTTjmIaY6vy/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycby2XAk6NdFCa1FXErjrp8fbvUsj2OdeVHlwnvP3ZzOHmbKxyB1B-rocAyTTjmIaY6vy/exec";
 
 const doctors = {
   ginecologia: [
-    { id: "doc1", nombre: "Dra. Astrada" },
-//  { id: "doc2", nombre: "Dra. López" }
-    { id: "doc3", nombre: "" }
+    { id: "doc1", nombre: "Dra. Astrada" }
   ]
 };
 
 const calendarMap = {
-  doc1: "e2ad99d8971d3c2ce5a9752fe9f3dd5a5fb9c9b4ae23ea0d0d91fe74652f35cc@group.calendar.google.com",
-  doc2: "TU_CALENDAR_ID_2"
+  doc1: "e2ad99d8971d3c2ce5a9752fe9f3dd5a5fb9c9b4ae23ea0d0d91fe74652f35cc@group.calendar.google.com"
 };
 
 const baseSlots = ["09:00","09:30","10:00","10:30","11:00","11:30"];
@@ -259,10 +256,6 @@ function loadSlots(){
           document.querySelectorAll(".slot").forEach(s => s.classList.remove("selected"));
           b.classList.add("selected");
 
-          // animación
-          b.style.transform = "scale(0.95)";
-          setTimeout(()=> b.style.transform="scale(1)",100);
-
           btn.disabled = false;
         };
       }
@@ -270,6 +263,9 @@ function loadSlots(){
       slots.appendChild(b);
     });
 
+  })
+  .catch(()=>{
+    slots.innerHTML = "Error cargando horarios";
   });
 }
 
@@ -298,13 +294,14 @@ function reservar(){
 
     alert("Turno reservado temporalmente ✔️");
 
-    // reset UI
+    const horaFinal = horarioSeleccionado;
+
     slots.innerHTML = "";
     btn.innerText = "Confirmar Reserva Temporal";
     horarioSeleccionado = null;
 
     const msg = encodeURIComponent(
-      `Hola, solicité turno:\n\nNombre: ${nombre}\nFecha: ${fecha.value}\nHora: ${horarioSeleccionado}`
+      `Hola, solicité turno:\n\nNombre: ${nombre}\nFecha: ${fecha.value}\nHora: ${horaFinal}`
     );
 
     window.location.href = `https://wa.me/5493547448227?text=${msg}`;
