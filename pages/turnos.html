@@ -292,15 +292,16 @@ function loadSlots(){
   }
 
   const config = getDoctorConfig();
-  const duracionSeleccionada = parseInt(document.getElementById("tipoTurno").value) || config.duraciones[0];
+  const duracionSeleccionada = parseInt(document.getElementById("tipoTurno").value);
   const slotsBase = generarSlots(config.slotBase);
 
   slots.innerHTML = "";
   horarioSeleccionado = null;
   btn.disabled = true;
 
-  const hoy = new Date().toISOString().split('T')[0];
+  // 🕐 fecha actual
   const ahora = new Date();
+  const hoyStr = ahora.toISOString().split('T')[0];
 
   fetch(`${API_URL}?doctor=${doc.value}&fecha=${fecha.value}`)
   .then(res => res.json())
@@ -312,39 +313,42 @@ function loadSlots(){
       b.className = "slot";
       b.innerText = h;
 
-      let ocupado = false;
-
-      // ⛔ 1. BLOQUEO POR PASADO (🔥 LO NUEVO)
-      if(fecha.value === hoy){
+      // =========================
+      // 🔴 BLOQUEO POR PASADO
+      // =========================
+      if(fecha.value === hoyStr){
 
         const partes = h.split(":");
         const horaSlot = new Date();
-
         horaSlot.setHours(parseInt(partes[0]));
         horaSlot.setMinutes(parseInt(partes[1]));
         horaSlot.setSeconds(0);
 
-        if(horaSlot < ahora){
-          ocupado = true;
+        if(horaSlot <= ahora){
+          b.classList.add("disabled");
+          slots.appendChild(b);
+          return;
         }
       }
 
-      // ⛔ 2. BLOQUEO POR DURACIÓN (lo que ya tenías)
-      if(!ocupado){
-        for(let i = 0; i < duracionSeleccionada; i += config.slotBase){
+      // =========================
+      // 🔴 BLOQUEO POR DURACIÓN
+      // =========================
+      let ocupado = false;
 
-          const partes = h.split(":");
-          let minutos = parseInt(partes[0])*60 + parseInt(partes[1]) + i;
+      for(let i = 0; i < duracionSeleccionada; i += config.slotBase){
 
-          const hh = String(Math.floor(minutos/60)).padStart(2,'0');
-          const mm = String(minutos%60).padStart(2,'0');
+        const partes = h.split(":");
+        let minutos = parseInt(partes[0])*60 + parseInt(partes[1]) + i;
 
-          const horaCheck = `${hh}:${mm}`;
+        const hh = String(Math.floor(minutos/60)).padStart(2,'0');
+        const mm = String(minutos%60).padStart(2,'0');
 
-          if(ocupados.includes(horaCheck)){
-            ocupado = true;
-            break;
-          }
+        const horaCheck = `${hh}:${mm}`;
+
+        if(ocupados.includes(horaCheck)){
+          ocupado = true;
+          break;
         }
       }
 
@@ -370,7 +374,7 @@ function loadSlots(){
     slots.innerHTML = "Error cargando horarios";
   });
 }
-
+    
 function reservar(){
 
   const nombre = document.getElementById("nombre").value.trim();
