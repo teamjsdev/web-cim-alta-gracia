@@ -156,6 +156,9 @@ footer {
 <label>Fecha</label>
 <input type="date" id="fecha">
 
+<label>Tipo de consulta</label>
+<select id="tipoTurno"></select>
+
 <label>Nombre paciente</label>
 <input type="text" id="nombre" placeholder="Ej: María García">
 
@@ -193,7 +196,18 @@ const API_URL = "https://script.google.com/macros/s/AKfycby2XAk6NdFCa1FXErjrp8fb
 
 const doctors = {
   ginecologia: [
-    { id: "doc1", nombre: "Dra. Astrada" }
+    { 
+      id: "doc1", 
+      nombre: "Dra. Astrada",
+      duraciones: [20, 40],   // 👈 puede elegir
+      slotBase: 20            // 👈 grilla base
+    },
+    { 
+      id: "doc2", 
+      nombre: "",
+      duraciones: [30],       // 👈 fijo
+      slotBase: 30
+    }
   ]
 };
 
@@ -204,6 +218,41 @@ const calendarMap = {
 const baseSlots = ["09:00","09:30","10:00","10:30","11:00","11:30"];
 
 // VARIABLES
+
+function getDoctorConfig() {
+  return doctors[esp.value].find(d => d.id === doc.value);
+}
+
+function generarSlots(slotBase){
+  const slots = [];
+  let hora = 9 * 60;
+  const fin = 12 * 60;
+
+  while(hora < fin){
+    const h = String(Math.floor(hora/60)).padStart(2,'0');
+    const m = String(hora%60).padStart(2,'0');
+    slots.push(`${h}:${m}`);
+    hora += slotBase;
+  }
+
+  return slots;
+}
+
+function loadTiposTurno(){
+  const select = document.getElementById("tipoTurno");
+  select.innerHTML = "";
+
+  const config = getDoctorConfig();
+
+  config.duraciones.forEach(d => {
+    const texto = d === 20 ? "Consulta breve" :
+                  d === 40 ? "Consulta completa" :
+                  `${d} min`;
+
+    select.add(new Option(`${texto} (${d} min)`, d));
+  });
+}
+
 let horarioSeleccionado = null;
 
 const esp = document.getElementById("especialidad");
@@ -223,6 +272,8 @@ Object.keys(doctors).forEach(e => esp.add(new Option(e, e)));
 function loadDoctors(){
   doc.innerHTML = "";
   doctors[esp.value].forEach(d => doc.add(new Option(d.nombre, d.id)));
+
+  loadTiposTurno();
   updateCalendar();
   loadSlots();
 }
@@ -240,6 +291,10 @@ function loadSlots(){
     return;
   }
 
+  const config = getDoctorConfig();
+  const duracionSeleccionada = parseInt(document.getElementById("tipoTurno").value);
+  const slotsBase = generarSlots(config.slotBase);
+
   slots.innerHTML = "";
   horarioSeleccionado = null;
   btn.disabled = true;
@@ -248,13 +303,32 @@ function loadSlots(){
   .then(res => res.json())
   .then(ocupados => {
 
-    baseSlots.forEach(h => {
+    slotsBase.forEach(h => {
 
       const b = document.createElement("button");
       b.className = "slot";
       b.innerText = h;
 
-      if(ocupados.includes(h)){
+      // ⛔ Validar bloqueo por duración
+      let ocupado = false;
+
+      for(let i = 0; i < duracionSeleccionada; i += config.slotBase){
+
+        const partes = h.split(":");
+        let minutos = parseInt(partes[0])*60 + parseInt(partes[1]) + i;
+
+        const hh = String(Math.floor(minutos/60)).padStart(2,'0');
+        const mm = String(minutos%60).padStart(2,'0');
+
+        const horaCheck = `${hh}:${mm}`;
+
+        if(ocupados.includes(horaCheck)){
+          ocupado = true;
+          break;
+        }
+      }
+
+      if(ocupado){
         b.classList.add("disabled");
       } else {
         b.onclick = () => {
@@ -280,6 +354,7 @@ function loadSlots(){
 function reservar(){
 
   const nombre = document.getElementById("nombre").value.trim();
+  const duracionSeleccionada = parseInt(document.getElementById("tipoTurno").value);
 
   if(nombre.length < 3 || !horarioSeleccionado){
     alert("Completá los datos correctamente");
@@ -295,7 +370,8 @@ function reservar(){
       nombre,
       fecha: fecha.value,
       hora: horarioSeleccionado,
-      doctor: doc.value
+      doctor: doc.value,
+      duracion: duracionSeleccionada   // 🔥 clave
     })
   })
   .then(() => {
@@ -309,7 +385,7 @@ function reservar(){
     horarioSeleccionado = null;
 
     const msg = encodeURIComponent(
-      `Hola, solicité turno:\n\nNombre: ${nombre}\nFecha: ${fecha.value}\nHora: ${horaFinal}`
+      `Hola, solicité turno:\n\nNombre: ${nombre}\nFecha: ${fecha.value}\nHora: ${horaFinal}\nDuración: ${duracionSeleccionada} min`
     );
 
     window.location.href = `https://wa.me/5493547448227?text=${msg}`;
@@ -326,6 +402,7 @@ esp.onchange = loadDoctors;
 doc.onchange = () => { updateCalendar(); loadSlots(); };
 fecha.onchange = loadSlots;
 btn.onclick = reservar;
+document.getElementById("tipoTurno").onchange = loadSlots;
 
 // init
 loadDoctors();
