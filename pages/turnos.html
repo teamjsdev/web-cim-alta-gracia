@@ -156,9 +156,6 @@ footer {
 <label>Fecha</label>
 <input type="date" id="fecha">
 
-<h3>Calendario</h3>
-<iframe id="calendarFrame" style="border:0; border-radius:15px; margin-bottom:25px;" width="100%" height="400"></iframe>
-
 <label>Nombre</label>
 <input type="text" id="nombre" placeholder="Ej: María García">
 
@@ -166,6 +163,17 @@ footer {
 <div class="grid" id="slots"></div>
 
 <button id="btnReservar" disabled>Confirmar Reserva Temporal</button>
+
+<h3 style="margin-top:40px;">Turnos ya asignados</h3>
+
+<div style="margin-top:15px;">
+  <iframe 
+    id="calendarFrame" 
+    style="border:0; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,.05);" 
+    width="100%" 
+    height="400">
+  </iframe>
+</div>
 
 </div>
 </section>
