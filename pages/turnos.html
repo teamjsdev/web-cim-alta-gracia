@@ -245,8 +245,8 @@ function loadTiposTurno(){
   const config = getDoctorConfig();
 
   config.duraciones.forEach(d => {
-    const texto = d === 20 ? "Consulta breve" :
-                  d === 40 ? "Consulta completa" :
+    const texto = d === 20 ? "Consulta/Pap y Colpo/Ecografías" :
+                  d === 40 ? "Circuito de la mujer" :
                   `${d} min`;
 
     select.add(new Option(`${texto} (${d} min)`, d));
