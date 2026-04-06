@@ -262,7 +262,7 @@ const slots = document.getElementById("slots");
 const btn = document.getElementById("btnReservar");
 
 // bloquear fechas pasadas
-const today = new Date().toISOString().split('T')[0];
+const today = new Date().toLocaleDateString('en-CA');
 fecha.min = today;
 fecha.value = today;
 
@@ -300,8 +300,8 @@ function loadSlots(){
   btn.disabled = true;
 
   // 🕐 fecha actual
-  const ahora = new Date();
-  const hoyStr = ahora.toISOString().split('T')[0];
+const ahora = new Date();
+const hoyStr = ahora.toLocaleDateString('en-CA');
 
   fetch(`${API_URL}?doctor=${doc.value}&fecha=${fecha.value}`)
   .then(res => res.json())
@@ -319,10 +319,7 @@ function loadSlots(){
       if(fecha.value === hoyStr){
 
         const partes = h.split(":");
-        const horaSlot = new Date();
-        horaSlot.setHours(parseInt(partes[0]));
-        horaSlot.setMinutes(parseInt(partes[1]));
-        horaSlot.setSeconds(0);
+        const horaSlot = new Date(fecha.value + "T" + h + ":00");
 
         if(horaSlot <= ahora){
           b.classList.add("disabled");
