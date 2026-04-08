@@ -1,306 +1,291 @@
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
-<meta charset="UTF-8">
-<title>Centro Integral de la Mujer | Alta Gracia</title>
+    <meta charset="UTF-8">
+    <title>Contador Público en Córdoba | Nicolás Moyano</title>
 
-<link rel="canonical" href="https://cimaltagracia.com/" />
+    <!-- SEO básico -->
+    <meta name="description" content="Nicolás Moyano, Contador Público en Córdoba, Argentina. Confección y certificación de balances, auditoría, ajuste por inflación y asesoramiento contable para empresas.">
+    <meta name="keywords" content="contador público Córdoba, balances Córdoba, auditoría contable, ajuste por inflación, contador Argentina, estados contables">
+    <meta name="author" content="Nicolás Moyano">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Centro Integral de la Mujer en Alta Gracia. Atención médica, estética y laboratorio, orientado a la mujer y abierto a todas las personas, sin distinción de sexo o identidad de género. Turnos y consultas.">
-<meta name="keywords" content="centro medico alta gracia, ginecologia, laboratorio, odontologia, estetica, salud mujer">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO local -->
+    <meta name="geo.region" content="AR-X">
+    <meta name="geo.placename" content="Córdoba, Argentina">
+    <meta name="geo.position" content="-31.4201;-64.1888">
+    <meta name="ICBM" content="-31.4201, -64.1888">
 
-<link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="48x48" href="/assets/logos/favicon.png">
-<link rel="apple-touch-icon" href="/assets/logos/favicon.png">
+    <!-- Font Awesome (LinkedIn icon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
 
-<style>
-* {
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
+        body {
+            background-color: #f4f6f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            margin-top: 12px;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .header-top h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #ffffff;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            overflow-x: auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2a5298;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        section {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        section h2 {
+            color: #1e3c72;
+            margin-bottom: 25px;
+            font-size: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .contact-links a {
+            display: inline-block;
+            margin-right: 15px;
+            margin-top: 10px;
+            color: #2a5298;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .logo {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+        }
+
+        .acerca-img {
+            margin-top: 30px;
+        }
+
+        .acerca-img img {
+            width: 100%;
+            height: 50vh;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 12px;
+        }
+
+        footer {
+            background-color: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: #a9c9ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 28px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.1);
+            transition: 0.2s;
+        }
+
+        @media (max-width: 600px) {
+        .header-top {
+            gap: 8px;
+        }
+
+       .logo {
+            width: 32px;
+            height: 32px;
+       }
+
+       header h1 {
+            font-size: 1.8rem;
+        }
 }
-
-body {
-    margin: 0;
-    background: #f3f4f6;
-    color: #333;
-}
-
-/* HERO */
-header {
-    background: linear-gradient(135deg, #ec4899, #f472b6);
-    color: white;
-    padding: 40px 20px; /* Un poco más equilibrado */
-    text-align: center;
-}
-
-header h1 {
-    font-size: 2.5rem; /* Reducir ligeramente para evitar saltos de línea bruscos */
-    margin: 0 0 10px 0;
-}
-
-header p {
-    font-size: 1.1rem;
-    max-width: 600px; /* Reducir el ancho máximo hace que el texto sea más legible */
-    margin: 0 auto 20px; /* Menos margen inferior */
-}
-
-.cta-btn {
-    background: white;
-    color: #ec4899;
-    padding: 14px 28px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.cta-btn:hover {
-    background: #be185d;
-    transition: all 0.3s;
-    color: white;
-}
-
-
-/* NAV */
-nav {
-    background: white;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,.1);
-    position: sticky;
-    top: 0;
-}
-
-nav a {
-    margin: 0 12px;
-    text-decoration: none;
-    color: #374151;
-    font-weight: 600;
-}
-
-/* SECCIONES */
-section {
-    max-width: 1100px;
-    margin: 70px auto;
-    padding: 0 20px;
-}
-
-h2 {
-    font-size: 2rem;
-    margin-bottom: 25px;
-    color: #374151;
-}
-
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 6px 15px rgba(0,0,0,.08);
-}
-
-/* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.service {
-    background: white;
-    padding: 25px;
-    border-radius: 14px;
-    box-shadow: 0 4px 10px rgba(0,0,0,.08);
-}
-
-.service h3 {
-    color: #ec4899;
-}
-
-/* FOOTER */
-footer {
-    background: #374151;
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
-}
-
-footer a {
-    color: #a9c9ff;
-    text-decoration: none;
-}
-
-
-.whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25d366;
-    color: white;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 28px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.whatsapp:hover {
-    transform: scale(1.1);
-    transition: 0.2s;
-}
-
-@media (max-width: 768px) {
-    header {
-        padding: 30px 15px;
-    }
-
-    header h1 {
-        font-size: 2rem;
-    }
-
-    header p {
-        font-size: 1rem;
-    }
-
-    section {
-        margin: 60px auto;
-    }
-
-    #contacto {
-        margin-top: 120px;
-    }
-
-    /* 👇 FIX del menú */
-    nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    nav a {
-        margin: 8px 12px;
-    }
-}
-
-</style>
+        
+    </style>
 </head>
-
 <body>
 
-<header>
-    <h1>Centro Integral de la Mujer</h1>
+<header id="inicio">
+
+    <div class="header-top">
+        <img src="assets/logos/nm.png" alt="NM" class="logo" loading="lazy">
+        <h1>Nicolás Moyano</h1>
+    </div>
+
     <p>
-    Atención médica integral en Alta Gracia.  
-    Profesionales especializados en salud, bienestar y estética, con enfoque en la mujer y atención inclusiva para todas las personas.
+        Asesoramiento contable para empresas que necesitan claridad y crecimiento
     </p>
-    <br>
-    <a href="https://wa.me/5493547448227?text=Hola%2C%20quisiera%20solicitar%20un%20turno" class="cta-btn" target="_blank" rel="noopener">
-        Solicitar turno
-    </a>
+
 </header>
 
 <nav>
-    <a href="#quienes">Nosotros</a>
-    <a href="#servicios">Especialidades</a>
-    <a href="#instalaciones">Servicios</a>
+    <a href="#inicio">Inicio</a>
+    <a href="#acerca">Acerca de</a>
+    <a href="#servicios">Servicios</a>
     <a href="#contacto">Contacto</a>
 </nav>
 
-<section id="quienes">
-    <h2>Quiénes somos</h2>
-    <div class="card">
-        <p>
-    Somos un centro médico en Alta Gracia dedicado a brindar <strong>atención integral en salud</strong>,
-    con un enfoque especializado en la mujer y servicios para hombres y mujeres,
-    atendiendo a todas las personas sin distinción de sexo o identidad de género.
-        </p>
-        <p>
-            Contamos con consultorios equipados, laboratorio, área de estética
-            y un equipo interdisciplinario de profesionales comprometidos con la salud.
-        </p>
+<section id="acerca">
+    <h2>Acerca de</h2>
+
+    <div class="acerca-wrapper">
+
+        <div class="card">
+            <p>
+                Soy <strong>Nicolás Moyano</strong>, Contador Público, con experiencia como profesional independiente
+                y en estudios contables, trabajando con empresas comerciales, de servicios e industriales en Córdoba
+                y en todo el país de manera remota.
+            </p>
+        </div>
+
+        <div class="acerca-img">
+            <img src="assets/img/perfil.png" alt="Nicolás Moyano" loading="lazy">
+        </div>
+
     </div>
 </section>
 
 <section id="servicios">
-    <h2>Especialidades médicas</h2>
-
-    <div class="grid">
-        <div class="service"><h3>Ginecología</h3></div>
-        <div class="service"><h3>Obstetricia</h3></div>
-        <div class="service"><h3>Clínica Médica</h3></div>
-        <div class="service"><h3>Cardiología</h3></div>
-        <div class="service"><h3>Nutrición</h3></div>
-        <div class="service"><h3>Dermatología</h3></div>
-        <div class="service"><h3>Kinesiología</h3></div>
-        <div class="service"><h3>Fonoaudiología</h3></div>
-        <div class="service"><h3>Odontología</h3></div>
-        <div class="service"><h3>Genética</h3></div>
-        <div class="service"><h3>Sexología</h3></div>
-        <div class="service"><h3>Urología</h3></div>
-        <div class="service"><h3>Cirugía Plástica</h3></div>
-    </div>
-</section>
-
-<section id="instalaciones">
-    <h2>Servicios del centro</h2>
-
-    <div class="grid">
-        <div class="service">
-            <h3>Laboratorio</h3>
-            <p>Análisis clínicos y estudios.</p>
-        </div>
-
-        <div class="service">
-            <h3>Ecografía</h3>
-            <p>Diagnóstico por imágenes.</p>
-        </div>
-
-        <div class="service">
-            <h3>Estética</h3>
-            <p>Tratamientos faciales y corporales.</p>
-        </div>
-
-        <div class="service">
-            <h3>Acompañamiento Terapéutico</h3>
-            <p>Apoyo integral en procesos de salud.</p>
-        </div>
-
-        <div class="service">
-            <h3>Obras Sociales</h3>
-            <p>Atendemos múltiples obras sociales y mutuales.</p>
-        </div>
-
-        <div class="service">
-            <h3>Secretaría</h3>
-            <p>Gestión de turnos y atención al paciente.</p>
-        </div>
+    <h2>Servicios Profesionales</h2>
+    <div class="card">
+        <ul>
+            <li>Confección y certificación de balances</li>
+            <li>Legalización de Estados Contables (EECC)</li>
+            <li>Ajuste por inflación contable e impositivo</li>
+            <li>Auditoría contable</li>
+            <li>Análisis de Estados Contables</li>
+            <li>Certificaciones contables</li>
+            <li>Preparación de información para Ganancias (sociedades)</li>
+            <li>Soporte y asesoramiento contable y fiscal</li>
+        </ul>
     </div>
 </section>
 
 <section id="contacto">
     <h2>Contacto</h2>
-    <div class="card">
-        <p><strong>Dirección:</strong> Brasil esquina Almada, Alta Gracia, Córdoba.</p>
-        <p><strong>Teléfono:</strong>📱3547448227 </p>
+    <div class="card contact-links">
         <p>
-          <a href="https://instagram.com/cim.alta.gracia" target="_blank" rel="noopener" style="margin-right: 15px; color: #E4405F; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-instagram"></i></a>
-          <a href="https://tiktok.com/@gineconoe" target="_blank" rel="noopener" style="color: #000; font-size: 1.5rem; text-decoration: none;"><i class="fab fa-tiktok"></i></a>
+            📧 Email: 
+            <a href="mailto:cr.moyanonicolas@gmail.com">
+                cr.moyanonicolas@gmail.com
+            </a>
+        </p>
+
+        <p>
+            <a href="https://linkedin.com/in/nicolás-moyano-a01266212" 
+               target="_blank" 
+               rel="noopener"
+               style="color: #0A66C2; font-size: 1.5rem;">
+                <i class="fab fa-linkedin"></i>
+            </a>
         </p>
     </div>
 </section>
 
 <footer>
-    <p>© 2026 Centro Integral de la Mujer</p>
-    <p>Desarrollado por <a href="https://jsdevmobile.com/pages/web.html" target="_blank" rel="noopener">JSDev</a></p>
+    <p>© 2026 Nicolás Moyano - Contador Público - Córdoba, Argentina</p>
+    <p style="margin-top: 8px; font-size: 0.9rem;">
+        Sitio web desarrollado por 
+        <a href="https://jsdevmobile.com"
+        target="_blank">JSDev</a>
+    </p>
 </footer>
 
+<!-- BOTÓN WHATSAPP -->
 <a class="whatsapp"
-   href="https://wa.me/5493547448227"
-   target="_blank">
+   href="https://wa.me/5493513551707"
+   target="_blank"
+   rel="noopener">
    <i class="fab fa-whatsapp"></i>
 </a>
 
