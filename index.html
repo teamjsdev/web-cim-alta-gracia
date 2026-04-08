@@ -2,6 +2,17 @@
 <html lang="es-AR">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="
+default-src 'self';
+script-src 'self';
+style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+font-src https://cdnjs.cloudflare.com;
+img-src 'self' data: https:;
+connect-src 'self' https://script.google.com;
+frame-ancestors 'none';
+">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta name="referrer" content="no-referrer">
 <title>Centro Integral de la Mujer | Alta Gracia</title>
 
 <link rel="canonical" href="https://cimaltagracia.com/" />
@@ -198,7 +209,7 @@ footer a {
     Profesionales especializados en salud, bienestar y estética, con enfoque en la mujer y atención inclusiva para todas las personas.
     </p>
     <br>
-    <a href="https://wa.me/5493547448227?text=Hola%2C%20quisiera%20solicitar%20un%20turno" class="cta-btn" target="_blank" rel="noopener">
+    <a href="https://wa.me/5493547448227?text=Hola%2C%20quisiera%20solicitar%20un%20turno" class="cta-btn" target="_blank" rel="noopener noreferrer">
         Solicitar turno
     </a>
 </header>
@@ -300,7 +311,8 @@ footer a {
 
 <a class="whatsapp"
    href="https://wa.me/5493547448227"
-   target="_blank">
+   target="_blank"
+   rel="noopener noreferrer">
    <i class="fab fa-whatsapp"></i>
 </a>
 
