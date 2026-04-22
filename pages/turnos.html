@@ -305,7 +305,10 @@ const hoyStr = ahora.toLocaleDateString('en-CA');
 
   fetch(`${API_URL}?doctor=${doc.value}&fecha=${fecha.value}`)
   .then(res => res.json())
-  .then(ocupados => {
+  .then(data => {
+
+  const ocupados = Array.isArray(data) ? data : [];
+
 
     slotsBase.forEach(h => {
 
