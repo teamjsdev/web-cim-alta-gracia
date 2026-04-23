@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JSDev - Diseño Web</title>
+
+  <meta name="description" content="Diseño Web - Página en construcción" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* 1. RESET Y ESTRUCTURA BASE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Ocupa al menos el alto de la pantalla */
+      text-align: center;
+    }
+
+    /* 2. CONTENEDOR PRINCIPAL (CENTRA EL CONTENIDO) */
+    main {
+      flex: 1; /* Empuja al footer hacia abajo */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5em;
+      color: #3b82f6;
+    }
+
+    main p {
+      font-size: 1.2rem;
+      max-width: 500px;
+      margin-bottom: 2em;
+      line-height: 1.5;
+    }
+
+    /* Botón */
+    .btn-back {
+      color: #2563eb;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #2563eb;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-back:hover {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    /* 3. FOOTER (ANCHO COMPLETO) */
+    footer {
+      background: #374151;
+      color: white;
+      padding: 40px 20px;
+      width: 100%;
+    }
+
+    footer p {
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #a9c9ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <h1>Sitio en Construcción</h1>
+    <p>Estamos actualizando nuestros servicios. Muy pronto disponible.</p>
+    <a href="../index.html" class="btn-back">← Volver al Inicio</a>
+  </main>
+
+<footer>
+    <p>© <span id="year"></span> Centro Integral de la Mujer</p>
+    <p>Sitio desarrollado por <a href="https://jsdevmobile.com/pages/web.html" target="_blank" rel="noopener">JSDev</a></p>
+</footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
