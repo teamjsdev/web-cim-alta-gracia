@@ -305,9 +305,13 @@ footer a {
 </section>
 
 <footer>
-    <p>© 2026 Centro Integral de la Mujer</p>
-    <p>Desarrollado por <a href="https://jsdevmobile.com/pages/web.html" target="_blank" rel="noopener">JSDev</a></p>
+    <p>© <span id="year"></span> Centro Integral de la Mujer</p>
+    <p>Sitio desarrollado por <a href="https://jsdevmobile.com/pages/web.html" target="_blank" rel="noopener">JSDev</a></p>
 </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 <a class="whatsapp"
    href="https://wa.me/5493547448227"
