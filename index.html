@@ -195,6 +195,46 @@ footer a {
     nav a {
         margin: 8px 12px;
     }
+/* STAFF */
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.staff-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.staff-card img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    margin-bottom: 15px;
+}
+
+.staff-card h3 {
+    margin: 10px 0 5px;
+    color: #374151;
+}
+
+.staff-card p {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+.staff-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px; /* menos redondeado */
+}
+
 }
 
 </style>
@@ -291,6 +331,31 @@ footer a {
         </div>
     </div>
 </section>
+
+<!-- 
+<section id="staff">
+    <h2>Staff Médico</h2>
+    <p style="text-align:center; color:#6b7280; max-width:600px; margin:auto;">
+        Equipo de profesionales
+    </p>
+
+    <div class="staff-grid">
+
+        <div class="staff-card">
+            <img src="assets/img/1.png" alt="Dr. 1">
+            <h3>Dr. Devallis Miguel Angel</h3>
+            <p>Diagnóstico por imágenes</p>
+        </div>
+
+        <div class="staff-card">
+            <img src="assets/img/2.png" alt="Dr. 2">
+            <h3>Dr. Devallis Juan Pablo</h3>
+            <p>Diagnóstico por imágenes</p>
+        </div>
+
+    </div>
+</section>
+-->
 
 <section id="contacto">
     <h2>Contacto</h2>
