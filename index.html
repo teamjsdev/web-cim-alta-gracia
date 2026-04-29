@@ -111,6 +111,32 @@ h2 {
     box-shadow: 0 6px 15px rgba(0,0,0,.08);
 }
 
+/* STAFF (GENERAL - WEB + MOBILE) */
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.staff-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.staff-card h3 {
+    margin: 6px 0 2px;
+    line-height: 1.2;
+}
+
+.staff-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
 /* GRID */
 .grid {
     display: grid;
@@ -164,6 +190,15 @@ footer a {
     transition: 0.2s;
 }
 
+.staff-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
 @media (max-width: 768px) {
     header {
         padding: 30px 15px;
@@ -195,45 +230,10 @@ footer a {
     nav a {
         margin: 8px 12px;
     }
-/* STAFF */
-.staff-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 40px;
-    margin-top: 40px;
-    text-align: center;
-}
-
-.staff-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.staff-card img {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    margin-bottom: 15px;
-}
-
-.staff-card h3 {
-    margin: 10px 0 5px;
-    color: #374151;
-}
-
-.staff-card p {
-    color: #6b7280;
-    font-size: 0.95rem;
-}
-
-.staff-card img {
-    width: 150px;
-    height: 150px;
-    border-radius: 12px; /* menos redondeado */
-}
+   .staff-card img {
+        width: 120px;
+        height: 120px;
+    }
 
 }
 
@@ -258,6 +258,7 @@ footer a {
     <a href="#quienes">Nosotros</a>
     <a href="#servicios">Especialidades</a>
     <a href="#instalaciones">Servicios</a>
+    <a href="#staff">Profesionales</a>
     <a href="#contacto">Contacto</a>
 </nav>
 
@@ -332,7 +333,6 @@ footer a {
     </div>
 </section>
 
-<!-- 
 <section id="staff">
     <h2>Staff Médico</h2>
     <p style="text-align:center; color:#6b7280; max-width:600px; margin:auto;">
@@ -342,20 +342,70 @@ footer a {
     <div class="staff-grid">
 
         <div class="staff-card">
-            <img src="assets/img/1.png" alt="Dr. 1">
-            <h3>Dr. Devallis Miguel Angel</h3>
-            <p>Diagnóstico por imágenes</p>
+            <img src="assets/img/guillermo_astrada.jpg" alt="Dr. 1">
+            <h3>Dr. Guillermo Astrada</h3>
+            <p>Cardiología</p>
         </div>
 
         <div class="staff-card">
-            <img src="assets/img/2.png" alt="Dr. 2">
-            <h3>Dr. Devallis Juan Pablo</h3>
-            <p>Diagnóstico por imágenes</p>
+            <img src="assets/img/carlos_villareal.jpg" alt="Dr. 2">
+            <h3>Dr. Carlos Villareal</h3>
+            <p>Urología</p>
         </div>
+
+        <div class="staff-card">
+            <img src="assets/img/soledad_lacalle.jpg" alt="Dr. 3">
+            <h3>Lic. Soledad Lacalle</h3>
+            <p>Psicología</p>
+        </div>
+
+        <div class="staff-card">
+            <img src="assets/img/yamila_fontana.jpg" alt="Dr. 4">
+            <h3>Lic. Yamila Fontana</h3>
+            <p>Psicología</p>
+        </div>
+
+        <div class="staff-card">
+            <img src="assets/img/noelia_astrada.jpg" alt="Dr. 5">
+            <h3>Dra. Noelia Astrada</h3>
+            <p>Ginecología</p>
+        </div>
+
+        <div class="staff-card">
+            <img src="assets/img/alejandra_abregu.jpg" alt="Dr. 6">
+            <h3>Dra. Alejandra Abregú</h3>
+            <p>Odontología</p>
+        </div>
+
+
+<!-- 
+        <div class="staff-card">
+            <img src="assets/img/natalia_costigliolo.jpg" alt="Dr. 7">
+            <h3>Lic. Natalia Costigliolo</h3>
+            <p>Nutrición</p>
+        </div>
+ -->
+        <div class="staff-card">
+            <img src="assets/img/laboratorio.jpg" alt="Dr. 8">
+            <h3>Laboratorio</h3>
+        </div>
+
+        <div class="staff-card">
+            <img src="assets/img/cristian_lamberto.jpg" alt="Dr. 9">
+            <h3>Dr. Cristian Lamberto</h3>
+            <p>Ecografista</p>
+        </div>
+
+        <div class="staff-card">
+            <img src="assets/img/natalia_ibanez.jpg" alt="Dr. 10">
+            <h3>Lic. Natalia Ibáñez</h3>
+            <p>Fonoaudiología</p>
+        </div>
+
+
 
     </div>
 </section>
--->
 
 <section id="contacto">
     <h2>Contacto</h2>
