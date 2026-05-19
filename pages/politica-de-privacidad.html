@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<title>Turnos Online | Centro Integral de la Mujer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+* { box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+body { margin: 0; background: #f9fafb; color: #1f2937; }
+
+header {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+nav {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+    position: sticky;
+    top: 0;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 600;
+}
+
+section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.05);
+}
+
+select, input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+}
+
+.slot {
+    padding: 12px;
+    background: white;
+    color: #ec4899;
+    border: 2px solid #ec4899;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.slot:hover:not(.disabled) {
+    background: #fdf2f8;
+}
+
+.slot.disabled {
+    background: #eee;
+    color: #999;
+    border-color: #ddd;
+    cursor: not-allowed;
+}
+
+.slot.selected {
+    background: #ec4899;
+    color: white;
+}
+
+#btnReservar {
+    width: 100%;
+    padding: 18px;
+    background: #ec4899;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+#btnReservar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* FOOTER */
+footer {
+    background: #374151;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+footer a {
+    color: #a9c9ff;
+    text-decoration: none;
+}
+
+.whatsapp {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25d366;
+    color: white;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 32px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Centro Integral de la Mujer</h1>
+</header>
+
+<nav>
+<a href="/">Inicio</a>
+</nav>
+
+<main>
+
+<section>
+
+<h1>Política de Privacidad</h1>
+
+<p class="note-left">Última actualización: 19 de mayo de 2026</p>
+
+<p>
+Esta Política de Privacidad describe cómo Centro Integral de la Mujer recopila y utiliza los datos proporcionados al solicitar turnos médicos a través de este sitio web.
+</p>
+
+<h2>Información que recopilamos</h2>
+
+<p>
+Cuando nos contactas a través de los formularios del sitio web, podemos recibir la información que decidas proporcionar, como por ejemplo:
+</p>
+
+<p>Nombre</p>
+<p>Teléfono</p>
+<p>Cualquier información incluida en tu mensaje</p>
+
+<p>
+Esta información se utiliza únicamente para responder a tu consulta.
+</p>
+
+<h2>Uso de la información</h2>
+
+<p>
+Los datos ingresados (nombre, teléfono, fecha y horario solicitado) se utilizan únicamente para gestionar solicitudes de turnos médicos y contactar al paciente para confirmar la reserva.
+</p>
+
+<p>
+La reserva realizada desde este sitio es temporal y requiere confirmación posterior mediante WhatsApp o por parte del personal del centro.
+</p>
+
+<h2>Compartición de datos</h2>
+
+<p>
+No vendemos ni compartimos datos personales con terceros ajenos al servicio.
+La información puede ser utilizada únicamente por el personal administrativo y profesional del centro para gestionar turnos.
+</p>
+
+<h2>Almacenamiento</h2>
+
+<p>
+Los datos pueden almacenarse temporalmente en herramientas utilizadas para la gestión de turnos, incluyendo calendarios internos y registros administrativos, exclusivamente con fines organizativos.
+</p>
+
+<h2>Tus derechos</h2>
+
+<p>
+Como usuario, tienes derecho a saber qué información podemos tener sobre ti. En cualquier momento puedes solicitar:
+</p>
+
+<p><strong>Acceso:</strong> Saber qué información hemos recibido a través de tus envíos de formularios.</p>
+<p><strong>Corrección:</strong> Corregir información inexacta o incompleta.</p>
+<p><strong>Eliminación:</strong> Solicitar la eliminación de los datos proporcionados para la gestión de turnos, cuando corresponda.</p>
+
+<p>
+Para ejercer estos derechos, simplemente envíanos un correo electrónico a <strong>turnoscimag@gmail.com</strong>.
+</p>
+
+<h2>Conservación de la información</h2>
+
+<p>
+Conservamos la información personal únicamente durante el tiempo necesario para gestionar turnos, confirmaciones y organización administrativa del centro. Los registros podrán eliminarse periódicamente cuando ya no sean necesarios.
+</p>
+
+<h2>Seguridad de los datos</h2>
+
+<p>
+Tomamos medidas razonables para proteger la información que proporcionas a través de este sitio web. Sin embargo, ningún método de transmisión por Internet o almacenamiento electrónico es completamente seguro, y no podemos garantizar una seguridad absoluta.
+</p>
+
+<h2>Enlaces externos</h2>
+
+<p>
+Nuestro sitio web puede contener enlaces a otros sitios web de interés. Una vez que utilizas estos enlaces para abandonar nuestro sitio, ya no tenemos control sobre el sitio de destino. Por lo tanto, no somos responsables de la protección y privacidad de cualquier información que proporciones mientras visitas esos sitios.
+</p>
+
+<h2>Privacidad de los niños</h2>
+
+<p>
+Nuestros servicios no están dirigidos a niños menores de 13 años (o la edad mínima legal en tu jurisdicción). No recopilamos intencionalmente información personal identificable de niños. Si eres padre, madre o tutor y crees que tu hijo nos ha proporcionado información personal, por favor contáctanos para que podamos eliminarla.
+</p>
+
+<h2>Cambios en esta Política de Privacidad</h2>
+
+<p>
+Podemos actualizar esta Política de Privacidad ocasionalmente para reflejar cambios en nuestros servicios, requisitos legales o prácticas de privacidad. Cuando se realicen actualizaciones, la fecha de "Última actualización" en la parte superior de esta página será modificada.
+</p>
+
+<p>
+Recomendamos a los usuarios revisar esta página periódicamente para mantenerse informados sobre cómo protegemos su información.
+</p>
+
+<h2>Contacto</h2>
+
+<p>
+Si tienes alguna pregunta sobre esta Política de Privacidad, puedes contactarnos:
+</p>
+
+<p>
+Correo electrónico: turnoscimag@gmail.com
+</p>
+
+<p>
+Sitio web: https://cimaltagracia.com/
+</p>
+
+</section>
+
+</main>
+
+
+<footer>
+    <p>© <span id="year"></span> Centro Integral de la Mujer</p>
+    <p>Sitio desarrollado por <a href="https://jsdevmobile.com/pages/web.html" target="_blank" rel="noopener">JSDev</a></p>
+</footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
