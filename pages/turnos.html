@@ -162,8 +162,15 @@ footer {
 <label>Nombre paciente</label>
 <input type="text" id="nombre" placeholder="Ej: María García">
 
+<label>Teléfono</label>
+<input type="tel" id="telefono" placeholder="Ej: 3547123456">
+
 <h3>Horarios disponibles</h3>
 <div class="grid" id="slots"></div>
+
+<p style="font-size:14px;color:#6b7280;margin-top:20px;">
+La reserva queda pendiente hasta confirmar por WhatsApp.
+</p>
 
 <button id="btnReservar" disabled>Confirmar Reserva Temporal</button>
 
@@ -200,27 +207,97 @@ footer {
 const API_URL = "https://script.google.com/macros/s/AKfycbwlMzuhDaPXWf65XhvOmraWVwjA6lbRT2DT6mL7F5IiuTf09dv_yXsbzfA1hRwjdOgH/exec";
 
 const doctors = {
-  ginecologia: [
+  Ginecología: [
     { 
       id: "doc1", 
-      nombre: "Dra. Astrada",
+      nombre: "Dra. Noelia Astrada",
       duraciones: [20, 40],   // 👈 puede elegir
       slotBase: 20            // 👈 grilla base
-    },
+    }
+  ],
+
+  Cardiología: [
     { 
       id: "doc2", 
-      nombre: "",
-      duraciones: [30],       // 👈 fijo
+      nombre: "Dr. Guillermo Astrada",
+      duraciones: [30],
+      slotBase: 30
+    }
+  ],
+
+  Urología: [
+    { 
+      id: "doc3", 
+      nombre: "Dr. Carlos Villareal",
+      duraciones: [30],
+      slotBase: 30
+    }
+  ],
+
+  Psicología: [
+    { 
+      id: "doc4", 
+      nombre: "Lic. Soledad Lacalle",
+      duraciones: [30],
+      slotBase: 30    
+    },
+    { 
+      id: "doc5", 
+      nombre: "Lic. Yamila Fontana",
+      duraciones: [30],   
+      slotBase: 30
+    }
+  ],
+
+  Odontología: [
+    { 
+      id: "doc6", 
+      nombre: "Dra. Alejandra Abregú",
+      duraciones: [30],
+      slotBase: 30
+    }
+  ],
+
+  Fonoaudiología: [
+    { 
+      id: "doc7", 
+      nombre: "Lic. Natalia Ibáñez",
+      duraciones: [30],
+      slotBase: 30
+    }
+  ],
+
+  Ecografista: [
+    { 
+      id: "doc8", 
+      nombre: "Dr. Cristian Lamberto",
+      duraciones: [30],
+      slotBase: 30
+    }
+  ],
+
+  Laboratorio: [
+    { 
+      id: "doc9", 
+      nombre: "Laboratorio",
+      duraciones: [30],
       slotBase: 30
     }
   ]
+
 };
 
 const calendarMap = {
-  doc1: "e2ad99d8971d3c2ce5a9752fe9f3dd5a5fb9c9b4ae23ea0d0d91fe74652f35cc@group.calendar.google.com"
+  doc1: "e2ad99d8971d3c2ce5a9752fe9f3dd5a5fb9c9b4ae23ea0d0d91fe74652f35cc@group.calendar.google.com",
+  doc2: "43cfb8d06ca120c2f8a7dd1f43bdd4e0b0a215e235b26d6bae42ea0de33c7c4a@group.calendar.google.com",
+  doc3: "eb6acf8fc35fda1ec9ab6e8af6e896cfb6a20bb18de0aaed1958dd959b16348a@group.calendar.google.com",
+  doc4: "52a6cbf9f284eb9253f9886352322fc4e72548f8d6e8d279a37ad7036a1c67df@group.calendar.google.com",
+  doc5: "5a09eefc16c2ff5d80e98a30481a47c880002a304452c2ce2f66a2ae3acdef1a@group.calendar.google.com",
+  doc6: "39cdfe65ac605cce05ebfdb243aab966cbb0af97eea297244d5fc69a8ebc1da4@group.calendar.google.com",
+  doc7: "9cb8df5ae4ebfe0d8a64cedd5a3306fcca1663cd1ab923b17b6cf203157f968c@group.calendar.google.com",
+  doc8: "f5d8a8049581d8bac570c3e30791752a38550e67f197ae8195077bcae585e624@group.calendar.google.com",
+  doc9: "e6c15ddda40251bc96cbee32653da4404e60c8c2fa13c4943d153a1b451eee0d@group.calendar.google.com"
 };
-
-const baseSlots = ["09:00","09:30","10:00","10:30","11:00","11:30"];
 
 // VARIABLES
 
@@ -229,9 +306,23 @@ function getDoctorConfig() {
 }
 
 function generarSlots(slotBase){
+
+  const fechaSeleccionada = new Date(fecha.value + "T00:00:00");
+  const dia = fechaSeleccionada.getDay(); // 0 domingo
+
+  const horarios = {
+    1: { inicio: 8, fin: 11 }, // lunes
+    2: { inicio: 8, fin: 17 }, // martes
+    3: { inicio: 8, fin: 17 }, // miércoles
+    4: { inicio: 8, fin: 12 }, // jueves
+    5: { inicio: 8, fin: 13 }  // viernes
+  };
+
+  if(!horarios[dia]) return []; // sábado/domingo cerrado
+
   const slots = [];
-  let hora = 9 * 60;
-  const fin = 12 * 60;
+  let hora = horarios[dia].inicio * 60;
+  const fin = horarios[dia].fin * 60;
 
   while(hora < fin){
     const h = String(Math.floor(hora/60)).padStart(2,'0');
@@ -250,9 +341,13 @@ function loadTiposTurno(){
   const config = getDoctorConfig();
 
   config.duraciones.forEach(d => {
-    const texto = d === 20 ? "Consulta/Pap y Colpo/Ecografías" :
-                  d === 40 ? "Circuito de la mujer" :
-                  `${d} min`;
+
+    let texto = "Consulta general";
+
+    if(doc.value === "doc1"){
+      if(d === 20) texto = "Consulta/Pap y Colpo/Ecografías";
+      if(d === 40) texto = "Circuito de la mujer";
+    }
 
     select.add(new Option(`${texto} (${d} min)`, d));
   });
@@ -383,11 +478,26 @@ const hoyStr = ahora.toLocaleDateString('en-CA');
 function reservar(){
 
   const nombre = document.getElementById("nombre").value.trim();
+  const telefono = document.getElementById("telefono").value.trim();
   const duracionSeleccionada = parseInt(document.getElementById("tipoTurno").value);
 
-  if(nombre.length < 3 || nombre.length > 40 || !horarioSeleccionado){
-  alert("Completá los datos correctamente");
-  return;
+  if(
+    nombre.length < 3 ||
+    nombre.length > 40 ||
+    !/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre) ||
+    !horarioSeleccionado
+  ){
+    alert("Ingresá nombre válido y horario");
+    return;
+  }
+
+  if(
+    telefono.length < 8 ||
+    telefono.length > 15 ||
+    !/^\d+$/.test(telefono)
+  ){
+    alert("Ingresá teléfono válido");
+    return;
   }
 
   btn.disabled = true;
@@ -397,13 +507,22 @@ function reservar(){
     method: "POST",
     body: JSON.stringify({
       nombre,
+      telefono,
       fecha: fecha.value,
       hora: horarioSeleccionado,
       doctor: doc.value,
       duracion: duracionSeleccionada   // 🔥 clave
     })
   })
-  .then(() => {
+  .then(res => res.json())
+  .then(data => {
+
+    if(data.error){
+      alert(data.error);
+      btn.disabled = false;
+      btn.innerText = "Confirmar Reserva Temporal";
+      return;
+    }
 
     alert("Turno reservado temporalmente ✔️");
 
@@ -414,11 +533,10 @@ function reservar(){
     horarioSeleccionado = null;
 
     const msg = encodeURIComponent(
-      `Hola, solicité turno:\n\nNombre: ${nombre}\nFecha: ${fecha.value}\nHora: ${horaFinal}\nDuración: ${duracionSeleccionada} min`
+      `Hola, solicité turno:\n\nNombre: ${nombre}\nTeléfono: ${telefono}\nFecha: ${fecha.value}\nHora: ${horaFinal}\nDuración: ${duracionSeleccionada} min`
     );
 
     window.location.href = `https://wa.me/5493547448227?text=${msg}`;
-
   })
   .catch(()=>{
     alert("Error, intentá nuevamente");
