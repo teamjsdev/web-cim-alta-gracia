@@ -562,10 +562,11 @@ esp.onchange = loadDoctors;
 doc.onchange = () => { updateCalendar(); loadSlots(); };
 fecha.onchange = loadSlots;
     
-// btn.onclick = reservar;
-btn.onclick = () => {
-  window.location.href = "web-en-construccion.html";
-};
+btn.onclick = () => reservar();
+
+// btn.onclick = () => {
+//   window.location.href = "web-en-construccion.html";
+// };
     
 document.getElementById("tipoTurno").onchange = loadSlots;
 
