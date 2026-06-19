@@ -171,6 +171,9 @@ footer a {
 <label>Teléfono</label>
 <input type="tel" id="telefono" placeholder="Ej: 3547123456">
 
+<label>Email</label>
+<input type="email" id="email" placeholder="Ej: maria@gmail.com">
+
 <h3>Horarios disponibles</h3>
 <div class="grid" id="slots"></div>
 
@@ -492,6 +495,7 @@ function reservar(){
 
   const nombre = document.getElementById("nombre").value.trim();
   const telefono = document.getElementById("telefono").value.trim();
+  const email = document.getElementById("email").value.trim();
   const duracionSeleccionada = parseInt(document.getElementById("tipoTurno").value);
 
   if(
@@ -513,6 +517,14 @@ function reservar(){
     return;
   }
 
+  if(
+    !email ||
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  ){
+    alert("Ingresá un email válido");
+    return;
+  }
+
   btn.disabled = true;
   btn.innerText = "Procesando...";
 
@@ -521,6 +533,7 @@ function reservar(){
     body: JSON.stringify({
       nombre,
       telefono,
+      email,
       fecha: fecha.value,
       hora: horarioSeleccionado,
       doctor: doc.value,
